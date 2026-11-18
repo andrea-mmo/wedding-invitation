@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clara & Mateo · 12 de junio de 2027</title>
+<meta name="description" content="Toda la información de nuestra boda y confirmación de asistencia.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("papel")</script>
+<link rel="stylesheet" href="../shared/form.css"><link rel="stylesheet" href="styles.css"></head>
+<body class="locked">
+
+<button id="intro" class="intro" aria-label="Abrir invitación">
+  <span class="i-top"><span class="script">Clara &amp; Mateo</span><span class="dt">12 de junio de 2027</span></span>
+  <span class="env">
+    <span class="e-back"></span>
+    <span class="e-card"><img src="../shared/img/banner-letras.jpg" alt=""></span>
+    <span class="e-l"></span><span class="e-r"></span><span class="e-b"></span>
+    <svg class="e-folds" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 100 L50 58" fill="none" stroke="#F4F6E6" stroke-width="1.3" opacity=".8" vector-effect="non-scaling-stroke"/>
+      <path d="M100 100 L50 58" fill="none" stroke="#8a9570" stroke-width="1" opacity=".45" vector-effect="non-scaling-stroke"/>
+      <path d="M0 0 L50 58 M100 0 L50 58" fill="none" stroke="#8a9570" stroke-width="1" opacity=".35" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <span class="e-paper"></span>
+    <span class="e-flap">
+      <i class="f"></i><i class="bk"></i>
+      <svg class="edge" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true"><path d="M0 .3 L50 61.5 L100 .3" fill="none" stroke="#F6F5E2" stroke-width="1.6" opacity=".9" vector-effect="non-scaling-stroke"/></svg><span class="seal"><img src="../shared/img/sello.png" alt=""></span>
+    </span>
+  </span>
+  <span class="tap">Desliza para abrir</span>
+</button>
+
+<button id="music" class="music" hidden aria-label="Música"><span id="musicIc">♪</span></button>
+<a id="goRsvp" class="go-rsvp" href="#rsvp" hidden>Confirmar asistencia</a>
+<audio id="bgm" loop preload="auto"></audio>
+
+<main id="site" hidden>
+<header class="hero">
+  <img class="banner" src="../shared/img/banner-limpio.png" alt="Clara & Mateo · 12 de junio de 2027" width="1600" height="800">
+  <a href="#frase" class="cue" aria-label="Seguir bajando">↓</a>
+</header>
+
+<section id="frase" class="frase" aria-label="Bienvenida"><div class="frase-in"><p class="welcome" id="welcome"></p><i class="frase-line"><u></u></i></div></section>
+
+<section id="cuenta" class="count">
+  <p class="eyebrow">Faltan</p>
+  <div class="countdown" id="countdown"><div><b id="cdD">0</b><span>días</span></div><div><b id="cdH">0</b><span>horas</span></div><div><b id="cdM">0</b><span>minutos</span></div><div><b id="cdS">0</b><span>segundos</span></div></div>
+  <p class="eyebrow">para el día más especial</p>
+  <h2 class="script" id="heroDate"></h2>
+</section>
+
+<section id="info" class="sec reveal">
+  <img class="orn" src="../shared/img/dib-anillos.png" alt="" width="520" height="291" loading="lazy">
+  <h2 class="script">Dónde y cuándo</h2><p class="eyebrow">Ceremonia y celebración</p>
+  <div class="arches">
+    <article class="arch-card"><h3 class="script">Ceremonia</h3><p class="when"><span id="cerHora"></span></p><p class="venue" id="cerLugar"></p><p id="cerDir"></p><a class="btn" id="cerMapa" target="_blank" rel="noopener">Cómo llegar</a></article>
+    <article class="arch-card"><h3 class="script">Celebración</h3><p class="when"><span id="celHora"></span></p><p class="venue" id="celLugar"></p><p id="celDir"></p><a class="btn" id="celMapa" target="_blank" rel="noopener">Cómo llegar</a></article>
+  </div>
+  <p><button class="btn ghost" id="icsBtn" type="button">Añadir al calendario</button></p>
+</section>
+
+
+
+<section id="dress" class="sec tint reveal">
+  <h2 class="script">Código de vestimenta</h2>
+  <div class="dresswrap"><img class="guests" src="../shared/img/invitados-sin-hojas.png" alt="Invitados bailando, vestidos de gala">
+    <div class="dresscard"><h3>Etiqueta</h3><p id="dressTxt"></p>
+      <p class="avoid-t" id="dressEvitar"></p><div class="swatches" id="swatches"></div><p class="dress-thanks" id="dressGracias"></p></div>
+  </div>
+</section>
+
+<section id="regalos" class="sec reveal">
+  <h2 class="script">Regalos</h2><p class="eyebrow">Un detalle con cariño</p>
+  <div class="giftwrap"><img class="gift dib" src="../shared/img/dib-pergamino.png" alt="" width="640" height="540">
+    <div class="dresscard"><p id="regTxt"></p><p class="iban" id="regIban"></p><button class="btn" id="copyIban" type="button" hidden>Copiar número de cuenta</button></div>
+  </div>
+</section>
+
+
+
+<section id="galeria" class="sec reveal" hidden><h2 class="script">Nuestros momentos</h2><div class="gal" id="galList"></div></section>
+
+<section id="rsvp" class="rsvp reveal"><h2 class="script">Confirma tu asistencia</h2><p class="eyebrow">Esperamos que podáis venir</p><p class="deadline" id="deadlineMsg"></p>
+<form id="form" novalidate>
+  <div class="wiz-top" id="wizTop" aria-live="polite"><span id="wizLbl"></span><div class="wiz-dots" id="wizDots"></div></div>
+
+  <div class="step" data-t="Tus datos">
+    <h3 class="sub">Tus datos</h3>
+    <label>Nombre y apellidos
+      <input name="nombre" id="nombre" required autocomplete="name">
+    </label>
+  </div>
+
+  <div class="step" data-t="Asistencia">
+    <h3 class="sub">¿Nos acompañarás?</h3>
+    <fieldset><legend class="sr">¿Asistirás a nuestra boda?</legend>
+      <label class="opt"><input type="radio" name="asiste" value="Sí" required> Sí, allí estaré</label>
+      <label class="opt"><input type="radio" name="asiste" value="No"> No, lo siento</label>
+    </fieldset>
+  </div>
+
+  <div id="yes" hidden>
+    <div class="step" data-t="Acompañantes">
+      <img class="ico" src="../shared/img/ico-pareja-azul.png" alt="" width="440" height="817" loading="lazy"><h3 class="sub">Acompañantes</h3>
+      <fieldset><legend>¿Vendrás acompañado/a?</legend>
+        <label class="opt"><input type="radio" name="acomp" value="Sí"> Sí</label>
+        <label class="opt"><input type="radio" name="acomp" value="No" checked> No</label>
+      </fieldset>
+      <label id="acompBox" hidden>Nombre y apellidos del acompañante
+        <input name="acompNombre" id="acompNombre">
+      </label>
+      <fieldset><legend>¿Vendrán niños pequeños contigo?</legend>
+        <label class="opt"><input type="radio" name="ninos" value="Sí"> Sí</label>
+        <label class="opt"><input type="radio" name="ninos" value="No" checked> No</label>
+      </fieldset>
+      <div id="ninosBox" hidden>
+        <label>¿Cuántos? <input type="number" min="1" max="6" id="ninosN" value="1"></label>
+        <div id="ninosList"></div>
+        <fieldset><legend>¿Necesitan menú infantil?</legend>
+          <label class="opt"><input type="radio" name="menuInf" value="Sí"> Sí</label>
+          <label class="opt"><input type="radio" name="menuInf" value="No" checked> No</label>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="step" data-t="Alergias y menús">
+      <h3 class="sub">Alergias y menús</h3>
+      <p class="small">Indica a quién corresponde cada alergia o necesidad.</p>
+      <div id="personas"></div>
+    </div>
+
+    <div class="step" data-t="Autobús">
+      <h3 class="sub">Autobús</h3>
+      <div class="busbox"><p><b>Habrá servicio de autobús</b> para trasladar a los invitados hasta el lugar de la celebración.</p><p>Punto de recogida: <b><span id="busPunto2"></span></b>.</p><p>Regreso a las <b>24:00 h</b> o a las <b>04:00 h</b>.</p><p class="small" id="busNota"></p></div>
+      <fieldset><legend>¿Necesitas plaza de autobús?</legend>
+        <label class="opt"><input type="radio" name="bus" value="No" checked> No</label>
+        <label class="opt"><input type="radio" name="bus" value="Sí, solo ida"> Sí, solo ida</label>
+        <label class="opt"><input type="radio" name="bus" value="Sí, solo vuelta"> Sí, solo vuelta</label>
+        <label class="opt"><input type="radio" name="bus" value="Sí, ida y vuelta"> Sí, ida y vuelta</label>
+      </fieldset>
+      <div id="busBox" hidden>
+        <fieldset id="retBox"><legend>Para el regreso, ¿en qué horario volverás?</legend>
+          <label class="opt"><input type="radio" name="vuelta" value="24:00 h"> 24:00 h</label>
+          <label class="opt"><input type="radio" name="vuelta" value="04:00 h"> 04:00 h</label>
+        </fieldset>
+        <label>¿Cuántas plazas necesitas? <small>(contando acompañante y niños)</small>
+          <input type="number" min="1" max="10" id="plazas" value="1">
+        </label>
+      </div>
+    </div>
+
+    <div class="step" data-t="Música">
+      <h3 class="sub">Ponle banda sonora</h3>
+      <label>¿Qué canción te haría salir a bailar? <small>(opcional)</small>
+        <input name="cancion" autocomplete="off" placeholder="Título y artista">
+      </label>
+    </div>
+  </div>
+
+  <div class="step" id="review" data-t="Revisión">
+    <h3 class="sub">Revisa tus respuestas</h3>
+    <p class="small">Comprueba que todo está bien antes de enviar.</p>
+    <div class="rv" id="rv"></div>
+  </div>
+
+  <div class="wiz-bar">
+  <p class="error" id="err" role="alert"></p>
+  <div class="wiz-nav">
+    <button class="btn ghost" id="wizBack" type="button" hidden>Atrás</button>
+    <button class="btn" id="wizNext" type="button">Siguiente</button>
+    <button class="btn" id="send" type="submit" hidden>Confirmar y enviar</button>
+  </div>
+  </div>
+  <p class="small" id="wizNote">Puedes volver a enviar el formulario con el mismo nombre para modificar tu respuesta hasta la fecha límite.</p>
+</form>
+    <div id="thanks" class="thanks" hidden></div>
+    <p class="help-contact" id="helpContact" hidden></p>
+</section>
+
+<footer class="foot">
+  <p class="script" id="foot"></p><p class="dtf">12 · junio · 2027</p>
+  <div class="church"><img id="footImg" src="../shared/img/iglesia.png" alt="Ermita de la Vega" width="1300" height="866"></div>
+  <div class="signbar"><span class="sign" id="credit"></span></div>
+</footer>
+</main>
+<script src="../shared/config.js"></script><script src="../shared/app.js"></script><script src="../shared/extras.js"></script><script src="extra.js"></script><script src="wizard.js"></script>
+</body></html>
