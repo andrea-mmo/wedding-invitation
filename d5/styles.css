@@ -531,3 +531,11 @@ html.papel .e-paper{background-image:url(../shared/img/papel-grano.png),url(../s
 .help-contact .q{margin:0 0 .6rem;font-size:1.05rem}
 .help-contact a{display:inline-flex;align-items:center;gap:.55rem;border:1.5px solid var(--accent);color:var(--head);border-radius:99px;padding:.7rem 1.4rem;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;text-decoration:none;background:#ffffff66;transition:background .3s}
 .help-contact a:hover,.help-contact a:focus-visible{background:#ffffffb3}
+
+/* selector de idioma (ES · CA · EN) */
+.lang{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:60;display:flex;gap:2px;padding:3px;border-radius:99px;background:#FFFDF8d9;border:1px solid var(--line);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lang button{font:600 .72rem/1 'Cormorant Garamond',Georgia,serif;letter-spacing:.12em;color:var(--ink);background:transparent;border:0;border-radius:99px;padding:.5rem .65rem;cursor:pointer;min-width:2.2rem}
+.lang button.on{background:var(--accent);color:#fff}
+.lang button:not(.on):hover{background:#dce5c8}
+.lang button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.music{top:calc(58px + env(safe-area-inset-top))}

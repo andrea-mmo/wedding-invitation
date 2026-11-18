@@ -163,7 +163,7 @@
     // visor
     var lb;
     function openLB(src){
-      if(!lb){lb=document.createElement('div');lb.className='lightbox';lb.hidden=true;lb.innerHTML='<img alt=""><button type="button" aria-label="Cerrar">×</button>';document.body.appendChild(lb);
+      if(!lb){lb=document.createElement('div');lb.className='lightbox';lb.hidden=true;lb.innerHTML='<img alt=""><button type="button" aria-label="'+tr('Cerrar')+'">×</button>';document.body.appendChild(lb);
         lb.addEventListener('click',function(){lb.hidden=true;document.body.classList.remove('locked')});
         document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&!lb.hidden){lb.hidden=true;document.body.classList.remove('locked')}})}
       lb.querySelector('img').src=src;lb.hidden=false;document.body.classList.add('locked');
@@ -335,7 +335,7 @@
   (function(){
     var el=document.getElementById('regIban'),iban=C.regalos&&C.regalos.iban;if(!el||!iban)return;
     var one=iban.replace(/\s+/g,'').replace(/(.{4})/g,'$1 ').trim();
-    el.innerHTML='<span class="ib-lbl">Número de cuenta</span><span class="ib-row">'+one+'</span>';
+    el.innerHTML='<span class="ib-lbl">'+tr('Número de cuenta')+'</span><span class="ib-row">'+one+'</span>';
     el.classList.add('ib');
   })();
   // Número de cuenta oculto: se destapa al tocar el botón
@@ -345,11 +345,11 @@
     var inner=document.createElement('div');inner.className='ib-inner';
     el.parentNode.insertBefore(box,el);box.appendChild(inner);inner.appendChild(el);if(cp)inner.appendChild(cp);
     var t=document.createElement('button');t.type='button';t.className='btn ghost ib-toggle';t.setAttribute('aria-expanded','false');t.setAttribute('aria-controls','ibReveal');
-    t.innerHTML='<span class="ib-ic" aria-hidden="true">♡</span> <span class="ib-tx">Ver número de cuenta</span>';
+    t.innerHTML='<span class="ib-ic" aria-hidden="true">♡</span> <span class="ib-tx">'+tr('Ver número de cuenta')+'</span>';
     box.parentNode.insertBefore(t,box);
     t.addEventListener('click',function(){
       var open=box.classList.toggle('open');t.setAttribute('aria-expanded',open?'true':'false');
-      t.querySelector('.ib-tx').textContent=open?'Ocultar número de cuenta':'Ver número de cuenta';
+      t.querySelector('.ib-tx').textContent=tr(open?'Ocultar número de cuenta':'Ver número de cuenta');
       t.querySelector('.ib-ic').textContent=open?'♥':'♡';
     });
   })();
@@ -357,13 +357,13 @@
   var b=document.getElementById('icsBtn');
   if(b)b.addEventListener('click',function(){
     var l=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Boda//ES','BEGIN:VEVENT','UID:boda-clara-mateo-20270612@boda','DTSTAMP:20260101T000000Z',
-      'DTSTART:20270612T160000Z','DTEND:20270613T030000Z','SUMMARY:Boda de Clara & Mateo',
-      'LOCATION:'+(C.ceremonia?C.ceremonia.lugar+', '+C.ceremonia.direccion:'')].concat(['BEGIN:VALARM', 'TRIGGER:-P7D', 'ACTION:DISPLAY', 'DESCRIPTION:Falta una semana para la boda de Clara y Mateo', 'END:VALARM', 'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:Mañana es la boda de Clara y Mateo', 'END:VALARM', 'BEGIN:VALARM', 'TRIGGER:-PT3H', 'ACTION:DISPLAY', 'DESCRIPTION:La ceremonia es a las 18:00 h', 'END:VALARM'],['END:VEVENT','END:VCALENDAR']).join('\r\n');
+      'DTSTART:20270612T160000Z','DTEND:20270613T030000Z','SUMMARY:'+tr('Boda de Clara & Mateo'),
+      'LOCATION:'+(C.ceremonia?C.ceremonia.lugar+', '+C.ceremonia.direccion:'')].concat(['BEGIN:VALARM', 'TRIGGER:-P7D', 'ACTION:DISPLAY', 'DESCRIPTION:'+tr('Falta una semana para la boda de Clara y Mateo'), 'END:VALARM', 'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:'+tr('Mañana es la boda de Clara y Mateo'), 'END:VALARM', 'BEGIN:VALARM', 'TRIGGER:-PT3H', 'ACTION:DISPLAY', 'DESCRIPTION:'+tr('La ceremonia es a las {0}',tr(C.ceremonia?C.ceremonia.hora:'18:00 h')), 'END:VALARM'],['END:VEVENT','END:VCALENDAR']).join('\r\n');
     var u=URL.createObjectURL(new Blob([l],{type:'text/calendar'})),x=document.createElement('a');x.href=u;x.download='boda-clara-mateo.ics';document.body.appendChild(x);x.click();x.remove();
   });
   // Copiar número de cuenta
   var iban=C.regalos&&C.regalos.iban,cb=document.getElementById('copyIban');
-  if(cb&&iban){cb.hidden=false;cb.addEventListener('click',function(){try{navigator.clipboard.writeText(iban);cb.textContent='¡Copiado!'}catch(e){}});}
+  if(cb&&iban){cb.hidden=false;cb.addEventListener('click',function(){try{navigator.clipboard.writeText(iban);cb.textContent=tr('¡Copiado!')}catch(e){}});}
 })();
 
 // Botón flotante "Confirmar asistencia": para quien vuelve a entrar y no quiere recorrer toda la invitación
@@ -371,7 +371,7 @@
   var rs=document.getElementById('rsvp'),b=document.getElementById('goRsvp');if(!rs||!b)return;
   var KEY='boda-rsvp-enviado',VKEY='boda-visitada',sent=false,back=false;
   try{sent=localStorage.getItem(KEY)==='1';back=localStorage.getItem(VKEY)==='1'}catch(e){}   // back = ya había entrado antes
-  function label(){b.textContent=sent?'Modificar mi respuesta':'Confirmar asistencia'}
+  function label(){b.textContent=tr(sent?'Modificar mi respuesta':'Confirmar asistencia')}
   function upd(){
     if(document.body.classList.contains('locked')){b.hidden=true;return}
     try{localStorage.setItem(VKEY,'1')}catch(e){}        // anota que ya ha abierto el sobre

@@ -11,31 +11,31 @@
   function validate(s){
     var i=steps.indexOf(s);
     if(i===0){
-      if($('nombre').value.trim().split(/\s+/).length<2)return 'Escribe tu nombre y apellidos.';
+      if($('nombre').value.trim().split(/\s+/).length<2)return tr('Escribe tu nombre y apellidos.');
     }else if(i===1){
-      if(!radio('asiste'))return 'Indícanos si asistirás.';
+      if(!radio('asiste'))return tr('Indícanos si asistirás.');
       if(radio('asiste')==='Sí'&&$('contacto')&&$('contacto').value.trim()){var ce=window.contactError&&window.contactError($('contacto').value);if(ce)return ce}   // teléfono opcional: solo se revisa si lo escriben
     }else if(i===2){
-      if(radio('acomp')==='Sí'&&!$('acompNombre').value.trim())return 'Escribe el nombre y apellidos de tu acompañante.';
+      if(radio('acomp')==='Sí'&&!$('acompNombre').value.trim())return tr('Escribe el nombre y apellidos de tu acompañante.');
       if(radio('ninos')==='Sí'){
         var n=Math.min(6,Math.max(1,+$('ninosN').value||1));
-        for(var k=0;k<n;k++){var a=$('kidN'+k),e=$('kidE'+k);if(!a||!a.value.trim()||!e||e.value.trim()==='')return 'Indica nombre y edad de cada niño/a.'}
+        for(var k=0;k<n;k++){var a=$('kidN'+k),e=$('kidE'+k);if(!a||!a.value.trim()||!e||e.value.trim()==='')return tr('Indica nombre y edad de cada niño/a.')}
       }
     }else if(i===3){
       var ps=[].slice.call(d.querySelectorAll('#personas .person'));
       for(var j=0;j<ps.length;j++){
         var sa=ps[j].querySelector('[data-f="alergia"]'),de=ps[j].querySelector('[data-f="detalle"]'),mn=ps[j].querySelector('[data-f="menu"]'),ot=ps[j].querySelector('[data-f="otro"]');
         var who=ps[j].querySelector('h4').textContent.trim();
-        if(sa&&sa.value==='Sí'&&!de.value.trim())return 'Indica la alergia de '+who+'.';
-        if(mn&&mn.value==='Otro'&&!ot.value.trim())return 'Indica el menú especial de '+who+'.';
+        if(sa&&sa.value==='Sí'&&!de.value.trim())return tr('Indica la alergia de {0}.',who);
+        if(mn&&mn.value==='Otro'&&!ot.value.trim())return tr('Indica el menú especial de {0}.',who);
       }
     }else if(i===4){
       var b=radio('bus');
       if(b&&b!=='No'){
         var pl=+$('plazas').value||0,tot=d.querySelectorAll('#personas .person').length||1;
-        if(pl<1)return 'Indica cuántas plazas de autobús necesitas.';
-        if(pl>tot)return 'Has pedido más plazas de autobús que personas en tu invitación.';
-        if(b!=='Sí, solo ida'&&!radio('vuelta'))return 'Elige el horario de regreso.';
+        if(pl<1)return tr('Indica cuántas plazas de autobús necesitas.');
+        if(pl>tot)return tr('Has pedido más plazas de autobús que personas en tu invitación.');
+        if(b!=='Sí, solo ida'&&!radio('vuelta'))return tr('Elige el horario de regreso.');
       }
     }
     return '';
@@ -43,30 +43,30 @@
 
   // resumen de respuestas antes de enviar
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  function row(k,v){return k?'<p><span>'+k+':</span>'+esc(v)+'</p>':'<p>'+esc(v)+'</p>'}
-  function sec(title,i,rows){return '<section class="rv-sec"><div class="rv-h"><span>'+title+'</span><button type="button" class="rv-edit" data-go="'+i+'">Editar</button></div>'+rows+'</section>'}
+  function row(k,v){return k?'<p><span>'+tr(k)+':</span>'+esc(v)+'</p>':'<p>'+esc(v)+'</p>'}
+  function sec(title,i,rows){return '<section class="rv-sec"><div class="rv-h"><span>'+tr(title)+'</span><button type="button" class="rv-edit" data-go="'+i+'">'+tr('Editar')+'</button></div>'+rows+'</section>'}
   function buildReview(){
     var box=$('rv');if(!box)return;
     var v=function(id){var e=$(id);return e?e.value.trim():''},as=radio('asiste'),h='';
     h+=sec('Tus datos',0,row('Nombre',v('nombre')));
-    h+=sec('Asistencia',1,row('',as==='Sí'?'Sí, allí estaré':'No podré asistir')+(as==='Sí'&&v('contacto')?row('Teléfono',v('contacto')):''));
+    h+=sec('Asistencia',1,row('',tr(as==='Sí'?'Sí, allí estaré':'No podré asistir'))+(as==='Sí'&&v('contacto')?row('Teléfono',v('contacto')):''));
     if(as==='Sí'){
-      var r=row('Acompañante',radio('acomp')==='Sí'?v('acompNombre'):'No');
+      var r=row('Acompañante',radio('acomp')==='Sí'?v('acompNombre'):tr('No'));
       if(radio('ninos')==='Sí'){
         var n=Math.min(6,Math.max(1,+$('ninosN').value||1)),kids=[];
-        for(var k=0;k<n;k++){var a=$('kidN'+k),e=$('kidE'+k);if(a&&a.value.trim())kids.push(a.value.trim()+(e&&e.value.trim()!==''?' ('+e.value.trim()+(e.value.trim()==='1'?' año':' años')+')':''))}
-        r+=row('Niños/as',kids.join(', '))+row('Menú infantil',radio('menuInf')||'No');
-      }else r+=row('Niños/as','No');
+        for(var k=0;k<n;k++){var a=$('kidN'+k),e=$('kidE'+k);if(a&&a.value.trim())kids.push(a.value.trim()+(e&&e.value.trim()!==''?' ('+e.value.trim()+' '+tr(e.value.trim()==='1'?'año':'años')+')':''))}
+        r+=row('Niños/as',kids.join(', '))+row('Menú infantil',tr(radio('menuInf')||'No'));
+      }else r+=row('Niños/as',tr('No'));
       h+=sec('Acompañantes',2,r);
       var al='';
       [].forEach.call(d.querySelectorAll('#personas .person'),function(p){
         var sa=p.querySelector('[data-f="alergia"]'),de=p.querySelector('[data-f="detalle"]'),mn=p.querySelector('[data-f="menu"]'),ot=p.querySelector('[data-f="otro"]');
-        var txt=(sa&&sa.value==='Sí'?'Alergia: '+(de?de.value.trim():''):'Sin alergias')+' · Menú: '+(mn&&mn.value==='Otro'?(ot?ot.value.trim():'Otro'):(mn?mn.value:'Ninguno'));
+        var txt=tr('{0} · Menú: {1}',sa&&sa.value==='Sí'?tr('Alergia: {0}',de?de.value.trim():''):tr('Sin alergias'),mn&&mn.value==='Otro'?(ot?ot.value.trim():tr('Otro')):tr(mn?mn.value:'Ninguno'));
         al+=row(p.querySelector('h4').textContent.trim(),txt);
       });
       h+=sec('Alergias y menús',3,al);
-      var b=radio('bus')||'No',bs=row('Plaza de autobús',b);
-      if(b!=='No'){if(b!=='Sí, solo ida')bs+=row('Regreso',radio('vuelta'));bs+=row('Plazas',v('plazas'))}
+      var b=radio('bus')||'No',bs=row('Plaza de autobús',tr(b));
+      if(b!=='No'){if(b!=='Sí, solo ida')bs+=row('Regreso',tr(radio('vuelta')));bs+=row('Plazas',v('plazas'))}
       h+=sec('Autobús',4,bs);
       var c=form.querySelector('[name="cancion"]');
       h+=sec('Música',5,row('Canción',c&&c.value.trim()?c.value.trim():'—'));
@@ -92,7 +92,7 @@
     var last=cur===list.length-1;
     back.hidden=cur===0;next.hidden=last;send.hidden=!last;
     if(last&&radio('asiste')==='No')note.hidden=false;
-    lbl.textContent='Paso '+(cur+1)+(radio('asiste')?' de '+list.length:'')+' · '+(s.dataset.t||'');
+    lbl.textContent=radio('asiste')?tr('Paso {0} de {1} · {2}',cur+1,list.length,s.dataset.t||''):tr('Paso {0} · {1}',cur+1,s.dataset.t||'');
     dots.innerHTML=!radio('asiste')?'':list.map(function(_,i){return '<i class="'+(i<cur?'done':i===cur?'cur':'')+'"></i>'}).join('');
     if(s===reviewStep){ret=false;buildReview()}
     if(!keep)msg('');
@@ -158,8 +158,8 @@
     var ul=d.createElement('ul');ul.className='dd-list';ul.setAttribute('role','listbox');ul.hidden=true;
     sel.parentNode.insertBefore(w,sel);w.appendChild(sel);w.appendChild(b);w.appendChild(ul);
     sel.classList.add('dd-native');sel.tabIndex=-1;
-    function paint(){b.textContent=sel.value;[].forEach.call(ul.children,function(li){li.classList.toggle('sel',li.dataset.v===sel.value)})}
-    [].forEach.call(sel.options,function(o){var li=d.createElement('li');li.dataset.v=o.value;li.textContent=o.value;li.setAttribute('role','option');ul.appendChild(li)});
+    function paint(){var so=sel.options[sel.selectedIndex];b.textContent=so?so.text:sel.value;[].forEach.call(ul.children,function(li){li.classList.toggle('sel',li.dataset.v===sel.value)})}
+    [].forEach.call(sel.options,function(o){var li=d.createElement('li');li.dataset.v=o.value;li.textContent=o.text;li.setAttribute('role','option');ul.appendChild(li)});
     function close(){ul.hidden=true;w.classList.remove('open')}
     b.addEventListener('click',function(e){e.preventDefault();var o=ul.hidden;d.querySelectorAll('.dd.open').forEach(function(x){x.classList.remove('open');x.querySelector('.dd-list').hidden=true});if(o){ul.hidden=false;w.classList.add('open')}});
     ul.addEventListener('click',function(e){var li=e.target.closest('li');if(!li)return;sel.value=li.dataset.v;paint();close();sel.dispatchEvent(new Event('input',{bubbles:true}));sel.dispatchEvent(new Event('change',{bubbles:true}))});
