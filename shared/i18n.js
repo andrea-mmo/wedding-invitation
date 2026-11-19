@@ -151,6 +151,8 @@
     "Falta una semana para la boda de Clara y Mateo": ["Falta una setmana per al casament de Clara i Mateo", "One week until Clara and Mateo's wedding"],
     "Mañana es la boda de Clara y Mateo": ["Demà és el casament de Clara i Mateo", "Clara and Mateo's wedding is tomorrow"],
     "La ceremonia es a las {0}": ["La cerimònia és a les {0}", "The ceremony is at {0}"],
+    "Cambiar a modo noche": ["Canviar a mode nit", "Switch to dark mode"],
+    "Cambiar a modo día": ["Canviar a mode dia", "Switch to light mode"],
     // ---------- Pie ----------
     "Diseño y desarrollo web": ["Disseny i desenvolupament web", "Web design and development"]
   };

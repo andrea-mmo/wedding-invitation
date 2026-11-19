@@ -7,6 +7,7 @@ A mobile-first wedding invitation website: an envelope that opens, countdown, di
 This is a sample copy of a real invitation I built as a gift for friends. The couple (Clara & Mateo), venues, phone number, account number and photos are all fictional, and the form runs in test mode, so nothing is saved.
 
 - Available in Spanish, Catalan and English (selector at the top right). Translations live in `shared/i18n.js`.
+- Light and dark mode (sun/moon button). It follows the device setting the first time and remembers the choice.
 - Plain HTML, CSS and JavaScript, no framework.
 - Everything personal (names, dates, venues, photos, gift details) lives in `shared/config.js`.
 - In the real version, replies are saved to a private Google Sheet through Google Apps Script.

@@ -539,3 +539,10 @@ html.papel .e-paper{background-image:url(../shared/img/papel-grano.png),url(../s
 .lang button:not(.on):hover{background:#dce5c8}
 .lang button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .music{top:calc(58px + env(safe-area-inset-top))}
+
+/* botón sol/luna */
+.lang .theme{display:grid;place-items:center;width:2.2rem;padding:0;margin-left:2px;border-left:1px solid var(--line);border-radius:0 99px 99px 0}
+.lang .theme svg{width:1rem;height:1rem;display:block}
+.lang .theme .sun{display:none}
+html[data-theme="dark"] .lang .theme .sun{display:block}
+html[data-theme="dark"] .lang .theme .moon{display:none}
