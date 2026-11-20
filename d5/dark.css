@@ -60,14 +60,14 @@ html[data-theme="dark"] .lang button{color:var(--ink)}
 html[data-theme="dark"] .lang button.on{background:#7C8238;color:#fff}
 html[data-theme="dark"] .lang button:not(.on):hover{background:#37442E}
 
-/* ilustraciones en acuarela: tienen partes translúcidas, así que en oscuro llevan debajo una mancha clara y suave para no verse apagadas */
+/* ilustraciones en acuarela: tienen partes translúcidas, así que en oscuro solo se aclaran un poco, sin halo */
 html[data-theme="dark"] .hyd,
 html[data-theme="dark"] .orn,
 html[data-theme="dark"] .giftwrap .gift.dib,
 html[data-theme="dark"] .guests,
 html[data-theme="dark"] .church img,
 html[data-theme="dark"] .rsvp .step .ico{
-  filter:drop-shadow(0 0 7px #F3E6C4) drop-shadow(0 0 12px #F3E6C4) drop-shadow(0 0 22px #EADDB899);
+  filter:brightness(1.1) saturate(1.05);
 }
 
 /* galería: paspartú oscuro en vez de blanco */
