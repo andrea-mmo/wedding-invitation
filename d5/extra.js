@@ -3,7 +3,7 @@
   // Música: se carga desde el principio y arranca al instante al tocar el sobre
   var i=document.getElementById('intro'),a=document.getElementById('bgm'),m=document.getElementById('music'),mi=document.getElementById('musicIc');
   if(a){
-    a.preload='auto';a.volume=.6;a.load();
+    a.preload='auto';a.src='../shared/audio/musica.m4a';a.volume=.6;a.load();
     a.addEventListener('canplay',function(){if(m)m.hidden=false},{once:true});
   }
   // Segundo en el que empieza la canción (config.musica.inicio): salta la intro y entra con un fundido suave
