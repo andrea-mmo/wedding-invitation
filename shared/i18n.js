@@ -40,6 +40,7 @@
     "Invitados bailando, vestidos de gala": ["Convidats ballant, vestits de gala", "Guests dancing in formal wear"],
     "Etiqueta": ["Etiqueta", "Formal attire"],
     "Un día tan especial merece una ocasión para vestirse de fiesta. Nos encantará veros guapos, elegantes y disfrutando de cada momento.": ["Un dia tan especial mereix una ocasió per vestir-se de festa. Ens encantarà veure-us guapos, elegants i gaudint de cada moment.", "A day this special deserves dressing up. We'll love to see you looking elegant and enjoying every moment."],
+    "os pedimos evitar los tonos verdes, beige y blanco": ["us demanem evitar els tons verds, beix i blanc", "please avoid green, beige and white"],
     "Para mantener la armonía de nuestra celebración, os pedimos evitar los tonos verdes, beige y blanco, que hemos reservado para nuestro cortejo nupcial.": ["Per mantenir l'harmonia de la nostra celebració, us demanem evitar els tons verds, beix i blanc, que hem reservat per al nostre seguici nupcial.", "To keep our celebration harmonious, please avoid green, beige and white, which we have reserved for our wedding party."],
     "¡Gracias por formar parte de nuestra historia!": ["Gràcies per formar part de la nostra història!", "Thank you for being part of our story!"],
     // ---------- Regalos ----------

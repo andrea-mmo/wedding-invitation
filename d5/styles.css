@@ -352,7 +352,7 @@ form[data-dir=back] .step.on.out{animation-name:stepOutB}
  #dress .dresscard{padding:1.7rem 1.6rem 1.6rem;border-radius:20px}
  #dress .dresscard h3{font-size:1.25rem;margin-bottom:.1rem}
  #dress .dresscard p{font-size:1rem;line-height:1.5;margin:.5rem 0}
- #dress .avoid-t{font-size:.9rem;margin-top:1rem}
+ #dress .avoid-t{font-size:1rem;line-height:1.5;margin-top:1rem}
  .swatches.chips{gap:.4rem;margin-top:.7rem;max-width:none}
  .chip{padding:.28rem .28rem .32rem;border-radius:5px}
  .chip span{height:1.7rem;border-radius:2px}
@@ -378,8 +378,8 @@ form[data-dir=back] .step.on.out{animation-name:stepOutB}
 
 /* ramos a sangre (cortados por el borde de la pantalla) */
 .hyd.tr{top:-7%;right:-10%;width:min(84vw,42svh,560px)}
-.hyd.bl{bottom:-5%;left:-11%;width:min(84vw,42svh,560px)}
-@media(min-width:561px){.hyd.tr{top:-6%;right:-6%;width:min(38vw,46svh,620px)}.hyd.bl{bottom:-5%;left:-6%;width:min(38vw,46svh,620px)}}
+.hyd.bl{bottom:0;left:-11%;width:min(84vw,42svh,560px)}
+@media(min-width:561px){.hyd.tr{top:-6%;right:-6%;width:min(38vw,46svh,620px)}.hyd.bl{bottom:0;left:-6%;width:min(38vw,46svh,620px)}}
 
 /* dorado: polvo que brilla y adorno bajo la frase */
 .petals b{position:absolute;display:block;border-radius:50%;background:radial-gradient(circle,#FFF3C4 0,#F0D48A 35%,#D9B25A 60%,rgba(217,178,90,0) 72%);opacity:0;mix-blend-mode:normal;animation:goldTwinkle ease-in-out infinite,goldDrift ease-in-out infinite alternate}
@@ -546,3 +546,10 @@ html.papel .e-paper{background-image:url(../shared/img/papel-grano.png),url(../s
 .lang .theme .sun{display:none}
 html[data-theme="dark"] .lang .theme .sun{display:block}
 html[data-theme="dark"] .lang .theme .moon{display:none}
+
+/* colores que no se pueden llevar: cada muestra va tachada con una línea dorada, fina pero bien visible */
+.chip span{position:relative;overflow:hidden}
+.chip span::after{content:"";position:absolute;left:-10%;right:-10%;top:50%;height:2.5px;border-radius:2px;background:linear-gradient(90deg,#9A7424,#D2AC48 50%,#9A7424);box-shadow:0 0 0 .6px #6b4f1466,0 1px 3px #0000002e;transform:rotate(-28deg);transform-origin:center}
+
+/* aviso de colores: mismo tamaño que el texto de arriba; solo «os pedimos evitar…» va en negrita y en el verde oscuro del título */
+.avoid-t strong{font-weight:700;font-style:italic;color:var(--head);background:linear-gradient(transparent 62%,#B8933F40 62%,#B8933F40 92%,transparent 92%);padding:0 .1em}

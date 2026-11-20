@@ -25,6 +25,7 @@ window.BODA = {
   dressCode: {
     texto: "Un día tan especial merece una ocasión para vestirse de fiesta. Nos encantará veros guapos, elegantes y disfrutando de cada momento.",
     evitar: "Para mantener la armonía de nuestra celebración, os pedimos evitar los tonos verdes, beige y blanco, que hemos reservado para nuestro cortejo nupcial.",
+    evitarResaltar: "os pedimos evitar los tonos verdes, beige y blanco",   // esta parte sale en negrita
     gracias: "¡Gracias por formar parte de nuestra historia!",
     coloresEvitar: ["#8EA17A", "#DFDEC1", "#0E8385", "#91AEA5", "#419085", "#F7F5EE"]
   },

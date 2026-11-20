@@ -11,6 +11,11 @@
   set("celHora", C.celebracion.hora); set("celLugar", C.celebracion.lugar); set("celDir", C.celebracion.direccion); $("celMapa").href = C.celebracion.mapa;
   set("busPunto", C.bus.recogida); set("busPunto2", C.bus.recogida); set("busNota", C.bus.nota);
   set("dressTxt", C.dressCode.texto); set("dressEvitar", C.dressCode.evitar);
+  // la parte más importante del aviso de colores va en negrita (sin cambiar el tamaño del texto)
+  (function () {
+    const e = $("dressEvitar"), t = tr(C.dressCode.evitar || ""), r = tr(C.dressCode.evitarResaltar || ""), i = r ? t.indexOf(r) : -1;
+    if (e && i >= 0) e.innerHTML = esc(t.slice(0, i)) + "<strong>" + esc(r) + "</strong>" + esc(t.slice(i + r.length));
+  })();
   set("dressGracias", C.dressCode.gracias || "");
   // teléfono de contacto (con enlace a WhatsApp)
   (function () {
